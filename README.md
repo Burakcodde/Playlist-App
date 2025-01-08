@@ -1,8 +1,8 @@
-# Jammming Project
+# Playlist App
 
 ## Description
 
-Jammming is a web application built with React, allowing users to search for songs, create custom playlists, and save them to their Spotify accounts. With integration to the Spotify API, users can search by song title, artist, or genre and view detailed information such as song title, artist, and album. Users can also create personal playlists and save them directly to their Spotify accounts.
+Playlist App is a web application built with React, allowing users to search for songs, create custom playlists, and save them to their Spotify accounts. With integration to the Spotify API, users can search by song title, artist, or genre and view detailed information such as song title, artist, and album. Users can also create personal playlists and save them directly to their Spotify accounts.
 
 ## Features
 
