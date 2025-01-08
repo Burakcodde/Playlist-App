@@ -1,0 +1,30 @@
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.SearchBar input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.SearchBar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #1db954; /* Spotify yeşili */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.SearchBar button:hover {
+  background-color: #1aa34a;
+}
