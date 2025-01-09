@@ -6,7 +6,7 @@ Playlist App is a web application built with React, allowing users to search for
 
 ## Features
 
-- **Search for songs** by song title, artist.
+- **Search for songs** by song title, artist, genre.
 - **View detailed song information** including title.
 - **Create custom playlists** and manage them.
 - **Save playlists to your Spotify account.**
