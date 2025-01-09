@@ -1,14 +1,36 @@
-.Tracklist {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px;
-  max-height: 400px;
-  overflow-y: auto;
+.TrackList {
+  margin: 20px 0;
 }
 
-.Tracklist p {
-  text-align: center;
-  color: #666;
-  font-size: 1em;
+.Track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.Track-information {
+  flex-grow: 1;
+}
+
+.Track-preview {
+  margin-top: 10px;
+}
+
+.Track-action {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #1db954;
+  color: white;
+  cursor: pointer;
+}
+
+.Track-action:hover {
+  background-color: #1ed760;
 }

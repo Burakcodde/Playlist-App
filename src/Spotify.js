@@ -75,7 +75,30 @@ const Spotify = {
                 method: "POST",
                 body: JSON.stringify({ uris: trackUris }),
               }
-            );
+            )
+              .then((response) => response.json())
+              .then(() => {
+                // Fetch track details to get preview URLs
+                return Promise.all(
+                  trackUris.map((uri) => {
+                    const trackId = uri.split(":")[2];
+                    return fetch(
+                      `https://api.spotify.com/v1/tracks/${trackId}`,
+                      { headers: headers }
+                    ).then((response) => response.json());
+                  })
+                );
+              })
+              .then((tracks) => {
+                // Display preview URLs
+                tracks.forEach((track) => {
+                  if (track.preview_url) {
+                    const audio = new Audio(track.preview_url);
+                    audio.controls = true;
+                    document.body.appendChild(audio);
+                  }
+                });
+              });
           });
       });
   },

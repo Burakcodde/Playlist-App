@@ -1,20 +1,43 @@
 import React from "react";
-import Track from "./Track";
+import "./Tracklist.css";
 
-const Tracklist = ({ tracks, onAdd, onRemove, isRemoval }) => {
-  return (
-    <div className="Tracklist">
-      {tracks.map((track) => (
-        <Track
-          key={track.id}
-          track={track}
-          onAdd={onAdd}
-          onRemove={onRemove}
-          isRemoval={isRemoval}
-        />
-      ))}
-    </div>
-  );
-};
+class TrackList extends React.Component {
+  render() {
+    return (
+      <div className="TrackList">
+        {this.props.tracks.map((track) => {
+          return (
+            <div key={track.id} className="Track">
+              <div className="Track-information">
+                <h3>{track.name}</h3>
+                <p>
+                  {track.artist} | {track.album}
+                </p>
+                {track.preview_url && (
+                  <audio controls className="Track-preview">
+                    <source src={track.preview_url} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
+              </div>
+              <button
+                className="Track-action"
+                onClick={() => this.props.onAdd(track)}
+              >
+                +
+              </button>
+              <button
+                className="Track-action"
+                onClick={() => this.props.onRemove(track)}
+              >
+                -
+              </button>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
 
-export default Tracklist;
+export default TrackList;

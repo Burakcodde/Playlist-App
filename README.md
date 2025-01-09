@@ -6,7 +6,7 @@ Playlist App is a web application built with React, allowing users to search for
 
 ## Features
 
-- **Search for songs** by song title, artist, genre.
+- **Search for songs** by song title, artist.
 - **View detailed song information** including title.
 - **Create custom playlists** and manage them.
 - **Save playlists to your Spotify account.**
@@ -18,10 +18,10 @@ Users can successfully search for songs using the Spotify API, add them to their
 ## How to Use
 
 1. Clone the repository:  
-   `git clone https://github.com/your-username/jammming.git`
+   `git clone https://github.com/Burakcodde/Playlist-App.git`
    
 2. Navigate to the project folder:  
-   `cd jammming`
+   `cd Playlist-App`
 
 3. Install dependencies:  
    `npm install`
