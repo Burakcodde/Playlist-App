@@ -1,10 +1,35 @@
 .SearchResults {
-  flex: 1;
-  margin: 10px;
+  width: 100%;
+  max-width: 800px; /* Genişliği artırdık */
+  margin-bottom: 20px;
 }
 
-.SearchResults h2 {
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 20px;
+.Tracklist {
+  list-style: none;
+  padding: 0;
+}
+
+.Tracklist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.Tracklist li:last-child {
+  border-bottom: none;
+}
+
+.Tracklist button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.Tracklist button:hover {
+  background-color: #1aa34a;
 }

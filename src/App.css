@@ -1,38 +1,126 @@
-.App {
+/* Genel stil ayarları */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+h1 {
   text-align: center;
+  color: #1db954;
+  font-size: 3rem;
+  margin-top: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.highlight {
+  color: #1db954;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App bileşeni stili */
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+}
+
+/* SearchBar bileşeni stili */
+.SearchBar {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.SearchBar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.SearchBar button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #1db954;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.SearchBar button:hover {
+  background-color: #1aa34a;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* SearchResults bileşeni stili */
+.SearchResults {
+  width: 100%;
+  max-width: 800px; /* Genişliği artırdık */
+  margin-bottom: 20px;
+}
+
+.Tracklist {
+  list-style: none;
+  padding: 0;
+}
+
+.Tracklist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.Tracklist li:last-child {
+  border-bottom: none;
+}
+
+.Tracklist button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.Tracklist button:hover {
+  background-color: #1aa34a;
+}
+
+/* Playlist bileşeni stili */
+.Playlist {
+  width: 100%;
+  max-width: 800px; /* Genişliği artırdık */
+  margin-bottom: 20px;
+}
+
+.Playlist input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.Playlist-save {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Playlist-save:hover {
+  background-color: #1aa34a;
 }

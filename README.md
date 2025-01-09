@@ -6,14 +6,14 @@ Playlist App is a web application built with React, allowing users to search for
 
 ## Features
 
-- **Search for songs** by song title, artist, genre, and more.
-- **View detailed song information** including title, artist, and album.
+- **Search for songs** by song title, artist.
+- **View detailed song information** including title.
 - **Create custom playlists** and manage them.
 - **Save playlists to your Spotify account.**
 
 ## Current Status
 
-The project is almost complete. However, I am currently experiencing an issue when trying to save playlists to Spotify, receiving a **401 Unauthorized error**. Work is ongoing to resolve this issue.
+Users can successfully search for songs using the Spotify API, add them to their custom playlists, and save the playlists to their Spotify accounts.  
 
 ## How to Use
 
@@ -34,6 +34,6 @@ The project is almost complete. However, I am currently experiencing an issue wh
 
 ## Future Improvements
 
-- Resolve the **401 error** for saving playlists to Spotify.
-- Enhance user interface and experience.
-- Implement additional playlist management features.
+- Add advanced search filters (e.g., by genre, popularity, or release date).
+- Enhance user interface and user experience.
+- Implement playlist sharing functionality.

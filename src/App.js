@@ -1,76 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
+import "./App.css";
+
+import Playlist from "./Playlist";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import Playlist from "./Playlist";
-import { searchTracks, savePlaylistToSpotify, getAuthUrl } from "./Spotify";
-import "./App.css";
+import Spotify from "./Spotify";
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState("Yeni Çalma Listesi");
+  const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
-  const [accessToken, setAccessToken] = useState(null);
 
-  useEffect(() => {
-    const hash = window.location.hash;
-    let token = window.localStorage.getItem("access_token");
-
-    if (!token && hash) {
-      token = new URLSearchParams(hash.substring(1)).get("access_token");
-      window.location.hash = "";
-      window.localStorage.setItem("access_token", token);
-    }
-
-    // Eğer token yoksa, kullanıcıyı yetkilendirme sayfasına yönlendir
-    if (!token) {
-      window.location.href = getAuthUrl();
-    } else {
-      setAccessToken(token);
-    }
+  const search = useCallback((term) => {
+    Spotify.search(term).then(setSearchResults);
   }, []);
 
-  const search = async (term) => {
-    const results = await searchTracks(term);
-    setSearchResults(results);
-  };
+  const addTrack = useCallback(
+    (track) => {
+      if (playlistTracks.some((savedTrack) => savedTrack.id === track.id))
+        return;
 
-  const addTrack = (track) => {
-    if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) {
-      return;
-    }
-    setPlaylistTracks([...playlistTracks, track]);
-  };
+      setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+    },
+    [playlistTracks]
+  );
 
-  const removeTrack = (track) => {
-    setPlaylistTracks((prev) =>
-      prev.filter((savedTrack) => savedTrack.id !== track.id)
+  const removeTrack = useCallback((track) => {
+    setPlaylistTracks((prevTracks) =>
+      prevTracks.filter((currentTrack) => currentTrack.id !== track.id)
     );
-  };
+  }, []);
 
-  const updatePlaylistName = (name) => {
+  const updatePlaylistName = useCallback((name) => {
     setPlaylistName(name);
-  };
+  }, []);
 
-  const savePlaylist = async () => {
+  const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
-    await savePlaylistToSpotify(accessToken, playlistName, trackUris);
-    setPlaylistName("Yeni Çalma Listesi");
-    setPlaylistTracks([]);
-  };
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setPlaylistName("New Playlist");
+      setPlaylistTracks([]);
+    });
+  }, [playlistName, playlistTracks]);
 
   return (
-    <div className="App">
-      <h1>Jammming</h1>
-      <SearchBar onSearch={search} />
-      <div className="App-playlist">
-        <SearchResults searchResults={searchResults} onAdd={addTrack} />
-        <Playlist
-          playlistName={playlistName}
-          playlistTracks={playlistTracks}
-          onRemove={removeTrack}
-          onNameChange={updatePlaylistName}
-          onSave={savePlaylist}
-        />
+    <div>
+      <h1>
+        <span className="highlight">Playlist App</span>
+      </h1>
+      <div className="App">
+        <SearchBar onSearch={search} />
+        <div className="App-playlist">
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          <Playlist
+            playlistName={playlistName}
+            playlistTracks={playlistTracks}
+            onNameChange={updatePlaylistName}
+            onRemove={removeTrack}
+            onSave={savePlaylist}
+          />
+        </div>
       </div>
     </div>
   );
